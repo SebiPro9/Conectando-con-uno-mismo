@@ -4,7 +4,7 @@
 // Configurar SUPABASE_URL y SUPABASE_ANON_KEY antes de publicar.
 // ============================================================
 
-const SUPABASE_URL      = 'https://ifqiqiocbaiwpvvnimeb.supabase.co/rest/v1/';      
+const SUPABASE_URL      = 'https://ifqiqiocbaiwpvvnimeb.supabase.co';      
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImlmcWlxaW9jYmFpd3B2dm5pbWViIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA4NzUxMjIsImV4cCI6MjA5NjQ1MTEyMn0.wHW1XmZ_mF1718OxNsM3pswrpArMTvaqO6h9inuV3u8'; 
 const ADMIN_PASSWORD    = 'admin123';                    
 
