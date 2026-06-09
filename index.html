@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Conectando con uno mismo</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- LOADING OVERLAY -->
+<div class="loading-ov" id="loading-ov">
+  <div class="spinner"></div>
+  <div class="loading-txt" id="loading-txt">Cargando...</div>
+</div>
+
+<!-- LANDING -->
+<div id="landing" class="screen active">
+  <div class="landing-top">
+    <div class="plant-ring">
+      <svg width="46" height="46" viewBox="0 0 48 48" fill="none">
+        <path d="M24 40V22" stroke="white" stroke-width="3" stroke-linecap="round"/>
+        <path d="M24 30C24 30 16 26 14 18C20 18 26 22 24 30Z" fill="white" opacity=".9"/>
+        <path d="M24 26C24 26 32 22 34 14C28 14 22 18 24 26Z" fill="white"/>
+      </svg>
+    </div>
+    <h1 class="landing-title">Conectando con<br>uno mismo</h1>
+    <p class="ls1">Cultiva tu bienestar digital 🌱</p>
+    <p class="ls2">Monitorea y controla el uso de tu celular</p>
+  </div>
+  <div class="landing-btns">
+    <button class="lbtn" style="background:#ffffff;color:#0a6e33;box-shadow:0 6px 20px rgba(0,0,0,.15)" onclick="showScreen('login-screen')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
+      <span>Iniciar Sesión</span>
+    </button>
+    <button class="lbtn" style="background:linear-gradient(135deg,#3b82f6,#1d4ed8);color:#fff;box-shadow:0 6px 20px rgba(29,78,216,.45)" onclick="showScreen('register-screen')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" y1="8" x2="19" y2="14"/><line x1="22" y1="11" x2="16" y2="11"/></svg>
+      <span>Registrarse</span>
+    </button>
+    <button class="lbtn" style="background:linear-gradient(135deg,#7c3aed,#4c1d95);color:#fff;box-shadow:0 6px 20px rgba(124,58,237,.45)" onclick="showScreen('admin-auth-screen')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      <span>Admin</span>
+    </button>
+  </div>
+</div>
+
+<!-- LOGIN -->
+<div id="login-screen" class="screen">
+  <div style="flex:1;display:flex;align-items:flex-end">
+    <div class="sheet">
+      <div class="handle"></div>
+      <div class="aico" style="background:linear-gradient(135deg,#43e97b,#0f9e4a);box-shadow:0 6px 20px rgba(15,158,74,.3)">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
+      </div>
+      <div class="auth-title">Bienvenido/a 👋</div>
+      <div class="auth-sub">Ingresá para continuar tu camino</div>
+      <div class="field"><label>Nombre completo</label><input type="text" id="login-name" placeholder="Como te registraste"></div>
+      <div class="field"><label>Contraseña</label><input type="password" id="login-pass" placeholder="••••••"></div>
+      <!-- Checkbox sesión persistente -->
+      <label class="keep-session-row">
+        <input type="checkbox" id="keep-session">
+        <span>Mantener sesión iniciada en este dispositivo</span>
+      </label>
+      <p class="err" id="login-err">Nombre o contraseña incorrectos.</p>
+      <button class="abtn" id="login-btn" style="background:linear-gradient(135deg,#2ecc71,#0a6e33);box-shadow:0 4px 16px rgba(10,110,51,.3)" onclick="doLogin()">Ingresar</button>
+      <p class="auth-link" style="margin-top:.9rem">¿No tenés cuenta? <span onclick="showScreen('register-screen')">Registrarse</span> · <span onclick="showScreen('landing')">Volver</span></p>
+    </div>
+  </div>
+</div>
+
+<!-- REGISTER -->
+<div id="register-screen" class="screen">
+  <div style="flex:1;display:flex;align-items:flex-end">
+    <div class="sheet">
+      <div class="handle"></div>
+      <div class="aico" style="background:linear-gradient(135deg,#60a5fa,#2563eb);box-shadow:0 6px 20px rgba(37,99,235,.3)">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" y1="8" x2="19" y2="14"/><line x1="22" y1="11" x2="16" y2="11"/></svg>
+      </div>
+      <div class="auth-title">Crear cuenta 🌱</div>
+      <div class="auth-sub">Comenzá tu camino de conexión interior</div>
+      <div class="field"><label>Nombre completo</label><input type="text" id="reg-name" placeholder="Tu nombre y apellido"></div>
+      <div class="field"><label>Contraseña</label><input type="password" id="reg-pass" placeholder="Mínimo 4 caracteres"></div>
+      <p class="err" id="reg-err">Ese nombre ya existe o datos incompletos.</p>
+      <button class="abtn" id="reg-btn" style="background:linear-gradient(135deg,#3b82f6,#1d4ed8);box-shadow:0 4px 16px rgba(29,78,216,.3)" onclick="doRegister()">Crear cuenta</button>
+      <p class="auth-link" style="margin-top:.9rem">¿Ya tenés cuenta? <span onclick="showScreen('login-screen')">Iniciar sesión</span> · <span onclick="showScreen('landing')">Volver</span></p>
+    </div>
+  </div>
+</div>
+
+<!-- ADMIN AUTH -->
+<div id="admin-auth-screen" class="screen">
+  <div style="flex:1;display:flex;align-items:flex-end">
+    <div class="sheet">
+      <div class="handle"></div>
+      <div class="aico" style="background:linear-gradient(135deg,#a78bfa,#4c1d95);box-shadow:0 6px 20px rgba(124,58,237,.3)">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <div class="auth-title">Acceso Administrador</div>
+      <div class="auth-sub">Solo para el administrador de la plataforma</div>
+      <div class="field"><label>Contraseña</label><input type="password" id="admin-pass" placeholder="••••••"></div>
+      <p class="err" id="admin-err">Contraseña incorrecta.</p>
+      <button class="abtn" style="background:linear-gradient(135deg,#7c3aed,#3b0764);box-shadow:0 4px 16px rgba(124,58,237,.3)" onclick="doAdminAuth()">Acceder al panel</button>
+      <p class="auth-link" style="margin-top:.9rem"><span onclick="showScreen('landing')">← Volver</span></p>
+    </div>
+  </div>
+</div>
+
+<!-- DASHBOARD -->
+<div id="dashboard" class="screen">
+  <div class="dash-header">
+    <div class="dash-top-row">
+      <div>
+        <div class="dash-hi" id="dash-hi">Buenos días ☀️</div>
+        <div class="dash-nm" id="dash-nm">—</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:.6rem">
+        <span style="font-size:1.3rem">🌱</span>
+        <button class="hbtn" onclick="doLogout()">Cerrar sesión</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="dash-cards">
+    <div id="ayer-banner" style="display:none" class="banner">
+      <span class="banner-icon">⏱️</span>
+      <span>¿Cuánto usaste el celular ayer? Completalo abajo en "Días anteriores"</span>
+    </div>
+
+    <!-- Objetivo card -->
+    <div class="obj-card">
+      <div class="obj-badge">✨ Mi intención de hoy</div>
+      <div class="obj-view" id="obj-view" onclick="toggleObjEdit(true)">
+        <div class="obj-text-big" id="obj-text-display"><span class="obj-empty-hint">Tocá para escribir tu objetivo de hoy</span></div>
+        <div class="obj-date-sm" id="obj-date"></div>
+        <div class="obj-edit-hint" id="obj-edit-hint" style="display:none">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+          Tocá para editar
+        </div>
+      </div>
+      <div class="obj-edit-area" id="obj-edit-area">
+        <textarea class="obj-ta" id="obj-ta" placeholder="¿Cuál es tu intención para este día? Escribila en una oración..."></textarea>
+        <div class="obj-btn-row">
+          <button class="obj-cancel" onclick="toggleObjEdit(false)">Cancelar</button>
+          <button class="obj-save" onclick="saveObjetivo()">Guardar objetivo ✓</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Counter -->
+    <div class="counter-card">
+      <div class="crow">
+        <div class="cbadge">📱 Desbloqueos hoy</div>
+        <button class="medit" onclick="openMetaModal()">Cambiar meta</button>
+      </div>
+      <div class="cnums">
+        <span class="cbig" id="unlock-count">0</span>
+        <span class="csep">/</span>
+        <span class="cgoal" id="unlock-goal">50</span>
+      </div>
+      <div class="cbar-bg"><div class="cbar" id="cbar" style="width:0%"></div></div>
+      <div class="chint" id="chint">Empezá el día con conciencia</div>
+    </div>
+
+    <!-- Unlock button -->
+    <button class="unlock-action" id="unlock-btn" onclick="addUnlock()">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><rect x="2" y="11" width="20" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+      Registrar desbloqueo del celular
+    </button>
+
+    <!-- Tiempo de uso -->
+    <div class="tiempo-card">
+      <div class="tiempo-badge">⏱️ Tiempo de uso del celular</div>
+      <div style="font-size:.72rem;font-weight:800;color:#6b8a6b;text-transform:uppercase;letter-spacing:.07em;margin-bottom:.6rem">Hoy</div>
+      <div id="tiempo-hoy-wrap"></div>
+      <div class="past-days-toggle" onclick="togglePastDays()" id="past-toggle">
+        <span class="past-toggle-label">📅 Días anteriores</span>
+        <span id="past-arrow" style="color:#9ca3af;font-size:.9rem">›</span>
+      </div>
+      <div id="past-days-list" style="display:none" class="past-days-list"></div>
+    </div>
+
+    <div class="sp"></div>
+  </div>
+</div>
+
+<!-- ADMIN -->
+<div id="admin-screen" class="screen">
+  <div class="admin-hdr">
+    <h2>🔮 Panel de Administración</h2>
+    <button class="hbtn" onclick="showScreen('landing')">Salir</button>
+  </div>
+  <div class="admin-body">
+    <div class="astats">
+      <div class="astat"><div class="astat-n" id="ast-u">0</div><div class="astat-l">Usuarios</div></div>
+      <div class="astat"><div class="astat-n" id="ast-e">0</div><div class="astat-l">Días activos</div></div>
+      <div class="astat"><div class="astat-n" id="ast-t">0</div><div class="astat-l">Desbloqueos</div></div>
+    </div>
+    <div class="admin-tabs">
+      <button class="tab" id="tab-u" style="background:linear-gradient(135deg,#3b82f6,#1d4ed8);box-shadow:0 3px 12px rgba(29,78,216,.3)" onclick="switchTab('users')">👥 Usuarios</button>
+      <button class="tab off" id="tab-c" onclick="switchTab('ctrl')">⚙️ Control</button>
+    </div>
+    <div class="admin-sec on" id="sec-users">
+      <div class="user-list" id="user-list"></div>
+    </div>
+    <div class="admin-sec" id="sec-ctrl">
+      <div class="ctrl-card">
+        <div class="ctrl-title">➕ Agregar usuario manualmente</div>
+        <input type="text" class="ctrl-input" id="new-name" placeholder="Nombre completo">
+        <input type="password" class="ctrl-input" id="new-pass" placeholder="Contraseña (mín. 4 caracteres)">
+        <p class="err" id="new-err" style="text-align:left;margin-bottom:.5rem">Datos incompletos o usuario ya existe.</p>
+        <button onclick="addUserAdmin()" style="width:100%;padding:.85rem;border:none;border-radius:10px;background:linear-gradient(135deg,#3b82f6,#1d4ed8);color:#fff;font-family:'Plus Jakarta Sans',sans-serif;font-size:.9rem;font-weight:700;cursor:pointer;box-shadow:0 4px 14px rgba(29,78,216,.3)">Agregar usuario</button>
+      </div>
+      <div class="ctrl-card">
+        <div class="ctrl-title">🗑️ Eliminar usuario</div>
+        <div id="delete-list"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- USER DETAIL MODAL -->
+<div class="modal-ov" id="user-detail-modal">
+  <div class="uds">
+    <div class="uds-hdr">
+      <div class="uds-nm" id="uds-nm">Usuario</div>
+      <button class="uds-close" onclick="closeUD()">✕</button>
+    </div>
+    <div class="uds-body" id="uds-body"></div>
+  </div>
+</div>
+
+<!-- META MODAL -->
+<div class="bm-ov" id="meta-modal">
+  <div class="bm">
+    <div class="bm-handle"></div>
+    <div class="bm-t">Cambiar meta diaria</div>
+    <div class="bm-s">¿Cuántos desbloqueos es tu límite para hoy?</div>
+    <input type="number" class="bm-in" id="meta-input" min="1" max="999" placeholder="50">
+    <div class="bm-row">
+      <button class="bm-cancel" onclick="closeMM()">Cancelar</button>
+      <button class="bm-ok" style="background:linear-gradient(135deg,#2ecc71,#0a6e33)" onclick="saveMM()">Guardar</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL EDITAR DÍA ANTERIOR -->
+<div class="modal-ov" id="edit-day-modal" style="z-index:150">
+  <div class="uds" style="background:#fff;max-height:92vh">
+    <div class="uds-hdr" style="background:linear-gradient(135deg,#7c3aed,#4c1d95)">
+      <div class="uds-nm">📅 Editar día anterior</div>
+      <button class="uds-close" onclick="closeEditDayModal()">✕</button>
+    </div>
+    <div class="uds-body" style="padding:1.25rem">
+
+      <div class="field" style="margin-bottom:1rem">
+        <label style="display:block;font-size:.72rem;font-weight:700;color:#6b8a6b;text-transform:uppercase;letter-spacing:.07em;margin-bottom:.35rem">Fecha</label>
+        <input type="date" id="edit-day-date"
+          style="width:100%;padding:.82rem 1rem;border:1.5px solid #e0e7e0;border-radius:12px;
+                 font-family:'Plus Jakarta Sans',sans-serif;font-size:.97rem;background:#f8fdf8;color:#1a2e1a">
+      </div>
+
+      <div class="field" style="margin-bottom:1rem">
+        <label style="display:block;font-size:.72rem;font-weight:700;color:#6b8a6b;text-transform:uppercase;letter-spacing:.07em;margin-bottom:.35rem">Intención / Objetivo del día</label>
+        <textarea id="edit-day-objetivo"
+          style="width:100%;border:1.5px solid #e5e7eb;border-radius:10px;padding:.75rem .9rem;
+                 font-family:'Plus Jakarta Sans',sans-serif;font-size:.95rem;color:#1a2e1a;
+                 resize:none;height:72px;background:#f8fdf8"
+          placeholder="¿Cuál fue tu intención ese día?"></textarea>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-bottom:1rem">
+        <div class="field">
+          <label style="display:block;font-size:.72rem;font-weight:700;color:#6b8a6b;text-transform:uppercase;letter-spacing:.07em;margin-bottom:.35rem">Desbloqueos</label>
+          <input type="number" id="edit-day-unlocks" min="0" placeholder="0"
+            style="width:100%;padding:.75rem .9rem;border:1.5px solid #e5e7eb;border-radius:10px;
+                   font-family:'Plus Jakarta Sans',sans-serif;font-size:1rem;font-weight:700;background:#fafafa">
+        </div>
+        <div class="field">
+          <label style="display:block;font-size:.72rem;font-weight:700;color:#6b8a6b;text-transform:uppercase;letter-spacing:.07em;margin-bottom:.35rem">Meta del día</label>
+          <input type="number" id="edit-day-goal" min="1" placeholder="50"
+            style="width:100%;padding:.75rem .9rem;border:1.5px solid #e5e7eb;border-radius:10px;
+                   font-family:'Plus Jakarta Sans',sans-serif;font-size:1rem;font-weight:700;background:#fafafa">
+        </div>
+      </div>
+
+      <div class="field" style="margin-bottom:1.5rem">
+        <label style="display:block;font-size:.72rem;font-weight:700;color:#6b8a6b;text-transform:uppercase;letter-spacing:.07em;margin-bottom:.35rem">Tiempo de uso</label>
+        <div style="display:flex;align-items:center;gap:.5rem;flex-wrap:wrap">
+          <input class="th-input" id="edit-day-th" type="number" min="0" max="24" placeholder="0"
+            style="width:64px">
+          <span class="th-sep">h</span>
+          <input class="th-input" id="edit-day-tm" type="number" min="0" max="59" placeholder="00"
+            style="width:64px">
+          <span class="th-sep">min</span>
+        </div>
+        <div style="font-size:.72rem;color:#9ca3af;margin-top:.35rem">Dejá en 0 si no querés registrar tiempo</div>
+      </div>
+
+      <div style="display:flex;gap:.75rem">
+        <button onclick="closeEditDayModal()"
+          style="flex:1;padding:.85rem;border:1.5px solid #e5e7eb;border-radius:10px;
+                 background:none;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;
+                 color:#6b8a6b;font-weight:600;font-size:.95rem">
+          Cancelar
+        </button>
+        <button onclick="saveEditDay()"
+          style="flex:2;padding:.85rem;border:none;border-radius:10px;
+                 background:linear-gradient(135deg,#7c3aed,#4c1d95);color:#fff;
+                 font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:.95rem;cursor:pointer">
+          Guardar día ✓
+        </button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="app.js"></script>
+</body>
+</html>
